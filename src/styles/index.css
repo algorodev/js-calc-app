@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 html {
 	box-sizing: border-box;
 }
@@ -16,9 +18,13 @@ html {
 }
 
 body {
-	background:  #FAFAFA;
-	color:       #212121;
+	background:  var(--color-background);
+	color:       var(--color-text);
 	font-family: 'Roboto', sans-serif;
+}
+
+input, button {
+	color: inherit;
 }
 
 .container {
@@ -48,8 +54,8 @@ body {
 	height:          120px;
 	margin-bottom:   20px;
 	padding:         0 20px;
-	background:      #FAFAFA;
-	border:          2px solid #E0E0E0;
+	background:      var(--color-background);
+	border:          2px solid var(--color-border);
 	border-radius:   5px;
 	font-size:       2rem;
 }
@@ -73,15 +79,15 @@ body {
 	justify-content: center;
 	align-items:     center;
 	height:          75px;
-	background:      #FAFAFA;
-	border:          2px solid #E0E0E0;
+	background:      var(--color-background);
+	border:          2px solid var(--color-border);
 	border-radius:   5px;
 	font-size:       1.5rem;
 	cursor:          pointer;
 	transition:      background 0.3s;
 
 	&:hover {
-		background: #E0E0E0;
+		background: var(--color-background-secondary);
 	}
 }
 
@@ -94,12 +100,12 @@ body {
 }
 
 #divide, #multiply, #subtract, #add, #equals {
-	background:   #FF7043;
-	border-color: #E64A19;
-	color:        #FAFAFA;
+	background:   var(--color-primary);
+	border-color: var(--color-border-secondary);
+	color:        var(--color-text-secondary);
 
 	&:hover {
-		background: #E64A19;
+		background: var(--color-secondary);
 	}
 }
 
