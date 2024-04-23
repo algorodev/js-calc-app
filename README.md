@@ -1,5 +1,6 @@
 <div align="center">
     <h2>JS Calculator</h2>
+    <p>Try it on <a href="https://js-calc-app-algorodev.netlify.app/">demo</a></p>
 </div>
 <div align="center">
 
@@ -73,8 +74,8 @@ modern web browser to start using the app immediately.
    the desired operation. Enter the second number. Press the "equals" button (`=`) to display the result.
 3. **Continuous Calculations**: After pressing equals, you can continue to perform operations on the result displayed.
    Select another operator and enter a new number to proceed with further calculations based on the displayed result.
-4. **Clearing the Display**: If you need to start a new calculation or correct an error, press the clear button (`C`).
-   This will erase the current operation and result, allowing you to start fresh.
+4. **Clearing the Display**: If you need to start a new calculation or correct an error, press the clear button (`C`) or
+   the backspace button (`CE`). This will erase the current operation and result, allowing you to start fresh.
 
 ## License
 
