@@ -76,7 +76,7 @@ const performOperation = (nextOperator) => {
 		firstValue = inputValue
 		displayValue = '0'
 	} else if (operator) {
-		const result = calculate(firstValue, inputValue, operator)
+		const result = String(calculate(firstValue, inputValue, operator))
 
 		displayValue = String(result)
 		firstValue = result
@@ -101,11 +101,7 @@ const calculate = (first, second, operator) => {
 }
 
 const removeLastDigit = () => {
-	displayValue = displayValue.substring(0, displayValue.length - 1)
-
-	if (displayValue === '') {
-		displayValue = '0'
-	}
+	displayValue = displayValue.substring(0, displayValue.length - 1) || '0'
 
 	updateDisplay()
 }
@@ -113,7 +109,7 @@ const removeLastDigit = () => {
 const handleEqualButton = () => {
 	if (waitingForSecondValue) {
 		const inputValue = parseFloat(displayValue)
-		displayValue = calculate(firstValue, inputValue, operator)
+		displayValue = String(calculate(firstValue, inputValue, operator))
 		firstValue = null
 		waitingForSecondValue = false
 	}
