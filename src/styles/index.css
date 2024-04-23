@@ -20,7 +20,7 @@ html {
 body {
 	background:  var(--color-background);
 	color:       var(--color-text);
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--font-primary);
 }
 
 input, button {
