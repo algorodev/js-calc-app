@@ -1,45 +1,47 @@
 const displayElement = document.getElementById('display')
-const clearButton = document.getElementById('clear')
-const backspaceButton = document.getElementById('backspace')
-const sevenButton = document.getElementById('seven')
-const eightButton = document.getElementById('eight')
-const nineButton = document.getElementById('nine')
-const divideButton = document.getElementById('divide')
-const fourButton = document.getElementById('four')
-const fiveButton = document.getElementById('five')
-const sixButton = document.getElementById('six')
-const multiplyButton = document.getElementById('multiply')
-const oneButton = document.getElementById('one')
-const twoButton = document.getElementById('two')
-const threeButton = document.getElementById('three')
-const addButton = document.getElementById('add')
-const zeroButton = document.getElementById('zero')
-const decimalButton = document.getElementById('decimal')
-const subtractButton = document.getElementById('subtract')
-const equalsButton = document.getElementById('equals')
+const buttonIds = [
+	{ key: 'clear', value: 'clear' },
+	{ key: 'backspace', value: 'backspace' },
+	{ key: 'seven', value: '7' },
+	{ key: 'eight', value: '8' },
+	{ key: 'nine', value: '9' },
+	{ key: 'divide', value: '/' },
+	{ key: 'four', value: '4' },
+	{ key: 'five', value: '5' },
+	{ key: 'six', value: '6' },
+	{ key: 'multiply', value: '*' },
+	{ key: 'one', value: '1' },
+	{ key: 'two', value: '2' },
+	{ key: 'three', value: '3' },
+	{ key: 'add', value: '+' },
+	{ key: 'zero', value: '0' },
+	{ key: 'decimal', value: '.' },
+	{ key: 'subtract', value: '-' },
+	{ key: 'equals', value: '=' },
+]
+const operations = ['+', '-', '*', '/']
 let displayValue = '0'
 let firstValue = null
 let operator = null
 let waitingForSecondValue = false
 
-clearButton.addEventListener('click', () => clearDisplay())
-sevenButton.addEventListener('click', () => inputDigit('7'))
-eightButton.addEventListener('click', () => inputDigit('8'))
-nineButton.addEventListener('click', () => inputDigit('9'))
-fourButton.addEventListener('click', () => inputDigit('4'))
-fiveButton.addEventListener('click', () => inputDigit('5'))
-sixButton.addEventListener('click', () => inputDigit('6'))
-oneButton.addEventListener('click', () => inputDigit('1'))
-twoButton.addEventListener('click', () => inputDigit('2'))
-threeButton.addEventListener('click', () => inputDigit('3'))
-zeroButton.addEventListener('click', () => inputDigit('0'))
-decimalButton.addEventListener('click', () => inputDecimal('.'))
-divideButton.addEventListener('click', () => performOperation('/'))
-multiplyButton.addEventListener('click', () => performOperation('*'))
-addButton.addEventListener('click', () => performOperation('+'))
-subtractButton.addEventListener('click', () => performOperation('-'))
-equalsButton.addEventListener('click', () => handleEqualButton())
-backspaceButton.addEventListener('click', () => removeLastDigit())
+buttonIds.forEach(({ key, value }) => {
+	const button = document.getElementById(key)
+
+	if (operations.includes(value)) {
+		button.addEventListener('click', () => performOperation(value))
+	} else if (key === 'clear') {
+		button.addEventListener('click', () => clearDisplay())
+	} else if (key === 'backspace') {
+		button.addEventListener('click', () => removeLastDigit())
+	} else if (key === 'equals') {
+		button.addEventListener('click', () => handleEqualButton())
+	} else if (key === 'decimal') {
+		button.addEventListener('click', () => inputDecimal(value))
+	} else {
+		button.addEventListener('click', () => inputDigit(value))
+	}
+})
 
 const updateDisplay = () => {
 	displayElement.value = displayValue
