@@ -54,11 +54,8 @@ const clearDisplay = () => {
 }
 
 const inputDigit = (digit) => {
-	if (displayValue === '0') {
-		displayValue = digit
-	} else {
-		displayValue += digit
-	}
+	displayValue = displayValue === '0' ? digit : displayValue + digit
+
 	updateDisplay()
 }
 
@@ -66,6 +63,7 @@ const inputDecimal = (dot) => {
 	if (!displayValue.includes(dot)) {
 		displayValue += dot
 	}
+
 	updateDisplay()
 }
 
@@ -78,7 +76,7 @@ const performOperation = (nextOperator) => {
 	} else if (operator) {
 		const result = String(calculate(firstValue, inputValue, operator))
 
-		displayValue = String(result)
+		displayValue = result
 		firstValue = result
 	}
 
@@ -87,17 +85,14 @@ const performOperation = (nextOperator) => {
 }
 
 const calculate = (first, second, operator) => {
-	if (operator === '+') {
-		return first + second
-	} else if (operator === '-') {
-		return first - second
-	} else if (operator === '*') {
-		return first * second
-	} else if (operator === '/') {
-		return first / second
+	const operations = {
+		'/': first / second,
+		'*': first * second,
+		'+': first + second,
+		'-': first - second,
 	}
 
-	return second
+	return operations[operator] || second
 }
 
 const removeLastDigit = () => {
